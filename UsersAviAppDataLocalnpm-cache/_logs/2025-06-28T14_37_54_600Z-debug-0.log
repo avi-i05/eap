@@ -1,0 +1,133 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v23.6.1
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Avi\.npmrc
+5 silly config load:file:C:\Users\Avi\OneDrive\Desktop\eap\UsersAviAppDataRoamingnpm\etc\npmrc
+6 verbose title npm exec create-react-app frontend
+7 verbose argv "exec" "--" "create-react-app" "frontend"
+8 verbose logfile logs-max:10 dir:C:\Users\Avi\OneDrive\Desktop\eap\UsersAviAppDataLocalnpm-cache\_logs\2025-06-28T14_37_54_600Z-
+9 verbose logfile C:\Users\Avi\OneDrive\Desktop\eap\UsersAviAppDataLocalnpm-cache\_logs\2025-06-28T14_37_54_600Z-debug-0.log
+10 silly logfile done cleaning log files
+11 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+12 http fetch GET 200 https://registry.npmjs.org/create-react-app 634ms (cache revalidated)
+13 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+14 verbose Could not read global path C:\Users\Avi\OneDrive\Desktop\eap\UsersAviAppDataRoamingnpm, ignoring
+15 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules/create-react-app
+17 silly idealTree buildDeps
+18 silly fetch manifest create-react-app@5.1.0
+19 silly packumentCache full:https://registry.npmjs.org/create-react-app cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/create-react-app 177ms (cache revalidated)
+21 silly packumentCache full:https://registry.npmjs.org/create-react-app set size:253358 disposed:false
+22 silly placeDep ROOT create-react-app@5.1.0 REPLACE for:  want: 5.1.0
+23 silly reify moves {}
+24 silly audit bulk request {
+24 silly audit   'ansi-styles': [ '4.3.0' ],
+24 silly audit   'balanced-match': [ '1.0.2' ],
+24 silly audit   'block-stream': [ '0.0.9' ],
+24 silly audit   'brace-expansion': [ '1.1.12' ],
+24 silly audit   'buffer-from': [ '0.1.2' ],
+24 silly audit   builtins: [ '1.0.3' ],
+24 silly audit   chalk: [ '4.1.2' ],
+24 silly audit   'color-convert': [ '2.0.1' ],
+24 silly audit   'color-name': [ '1.1.4' ],
+24 silly audit   commander: [ '4.1.1' ],
+24 silly audit   'concat-map': [ '0.0.1' ],
+24 silly audit   'core-util-is': [ '1.0.3' ],
+24 silly audit   'cross-spawn': [ '7.0.6' ],
+24 silly audit   debug: [ '2.6.9' ],
+24 silly audit   duplexer2: [ '0.0.2' ],
+24 silly audit   envinfo: [ '7.14.0' ],
+24 silly audit   'fs-extra': [ '10.1.0' ],
+24 silly audit   'fs.realpath': [ '1.0.0' ],
+24 silly audit   fstream: [ '1.0.12' ],
+24 silly audit   'fstream-ignore': [ '1.0.5' ],
+24 silly audit   glob: [ '7.2.3' ],
+24 silly audit   'graceful-fs': [ '4.2.11' ],
+24 silly audit   'has-flag': [ '4.0.0' ],
+24 silly audit   hyperquest: [ '2.1.3' ],
+24 silly audit   inflight: [ '1.0.6' ],
+24 silly audit   inherits: [ '2.0.4' ],
+24 silly audit   isarray: [ '0.0.1', '1.0.0' ],
+24 silly audit   isexe: [ '2.0.0' ],
+24 silly audit   jsonfile: [ '6.1.0' ],
+24 silly audit   kleur: [ '3.0.3' ],
+24 silly audit   minimatch: [ '3.1.2' ],
+24 silly audit   minimist: [ '1.2.8' ],
+24 silly audit   mkdirp: [ '0.5.6' ],
+24 silly audit   ms: [ '2.0.0' ],
+24 silly audit   once: [ '1.4.0' ],
+24 silly audit   'path-is-absolute': [ '1.0.1' ],
+24 silly audit   'path-key': [ '3.1.1' ],
+24 silly audit   'process-nextick-args': [ '2.0.1' ],
+24 silly audit   prompts: [ '2.4.2' ],
+24 silly audit   'readable-stream': [ '1.1.14', '2.3.8', '1.0.34' ],
+24 silly audit   rimraf: [ '2.7.1' ],
+24 silly audit   'safe-buffer': [ '5.1.2' ],
+24 silly audit   semver: [ '7.7.2' ],
+24 silly audit   'shebang-command': [ '2.0.0' ],
+24 silly audit   'shebang-regex': [ '3.0.0' ],
+24 silly audit   sisteransi: [ '1.0.5' ],
+24 silly audit   string_decoder: [ '0.10.31', '1.1.1' ],
+24 silly audit   'supports-color': [ '7.2.0' ],
+24 silly audit   tar: [ '2.2.2' ],
+24 silly audit   'tar-pack': [ '3.4.1' ],
+24 silly audit   through2: [ '0.6.5' ],
+24 silly audit   tmp: [ '0.2.3' ],
+24 silly audit   'uid-number': [ '0.0.6' ],
+24 silly audit   universalify: [ '2.0.1' ],
+24 silly audit   'util-deprecate': [ '1.0.2' ],
+24 silly audit   'validate-npm-package-name': [ '3.0.0' ],
+24 silly audit   which: [ '2.0.2' ],
+24 silly audit   wrappy: [ '1.0.2' ],
+24 silly audit   xtend: [ '4.0.2' ],
+24 silly audit   'create-react-app': [ '5.1.0' ]
+24 silly audit }
+25 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 549ms
+26 silly audit report {
+26 silly audit report   tar: [
+26 silly audit report     {
+26 silly audit report       id: 1089685,
+26 silly audit report       url: 'https://github.com/advisories/GHSA-3jfq-g458-7qm9',
+26 silly audit report       title: 'Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization',
+26 silly audit report       severity: 'high',
+26 silly audit report       vulnerable_versions: '<3.2.2',
+26 silly audit report       cwe: [Array],
+26 silly audit report       cvss: [Object]
+26 silly audit report     },
+26 silly audit report     {
+26 silly audit report       id: 1095117,
+26 silly audit report       url: 'https://github.com/advisories/GHSA-5955-9wpr-37jh',
+26 silly audit report       title: 'Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization',
+26 silly audit report       severity: 'high',
+26 silly audit report       vulnerable_versions: '<4.4.18',
+26 silly audit report       cwe: [Array],
+26 silly audit report       cvss: [Object]
+26 silly audit report     },
+26 silly audit report     {
+26 silly audit report       id: 1097493,
+26 silly audit report       url: 'https://github.com/advisories/GHSA-f5x3-32g6-xq36',
+26 silly audit report       title: 'Denial of service while parsing a tar file due to lack of folders count validation',
+26 silly audit report       severity: 'moderate',
+26 silly audit report       vulnerable_versions: '<6.2.1',
+26 silly audit report       cwe: [Array],
+26 silly audit report       cvss: [Object]
+26 silly audit report     }
+26 silly audit report   ]
+26 silly audit report }
+27 silly packumentCache corgi:https://registry.npmjs.org/tar cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/tar 159ms (cache revalidated)
+29 silly packumentCache corgi:https://registry.npmjs.org/tar set size:156578 disposed:false
+30 silly packumentCache corgi:https://registry.npmjs.org/tar-pack cache-miss
+31 http fetch GET 200 https://registry.npmjs.org/tar-pack 149ms (cache revalidated)
+32 silly packumentCache corgi:https://registry.npmjs.org/tar-pack set size:9421 disposed:false
+33 silly packumentCache corgi:https://registry.npmjs.org/create-react-app cache-miss
+34 http cache https://registry.npmjs.org/create-react-app 12ms (cache hit)
+35 silly packumentCache corgi:https://registry.npmjs.org/create-react-app set size:137779 disposed:false
+36 verbose cwd C:\Users\Avi\OneDrive\Desktop\eap
+37 verbose os Windows_NT 10.0.22631
+38 verbose node v23.6.1
+39 verbose npm  v10.9.2
+40 verbose exit 0
+41 info ok

@@ -1,0 +1,34 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v23.6.1
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Avi\.npmrc
+5 silly config load:file:C:\Users\Avi\OneDrive\Desktop\projects\eap\UsersAviAppDataRoamingnpm\etc\npmrc
+6 verbose title npm create vite@latest frontend react
+7 verbose argv "create" "vite@latest" "frontend" "--template" "react"
+8 verbose logfile logs-max:10 dir:C:\Users\Avi\OneDrive\Desktop\projects\eap\UsersAviAppDataLocalnpm-cache\_logs\2025-06-29T07_37_47_525Z-
+9 verbose logfile C:\Users\Avi\OneDrive\Desktop\projects\eap\UsersAviAppDataLocalnpm-cache\_logs\2025-06-29T07_37_47_525Z-debug-0.log
+10 silly logfile start cleaning logs, removing 1 files
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 http fetch GET 200 https://registry.npmjs.org/create-vite 726ms (cache miss)
+14 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+15 silly idealTree buildDeps
+16 silly fetch manifest create-vite@7.0.0
+17 silly packumentCache full:https://registry.npmjs.org/create-vite cache-miss
+18 http fetch GET 200 https://registry.npmjs.org/create-vite 231ms (cache miss)
+19 silly packumentCache full:https://registry.npmjs.org/create-vite set size:undefined disposed:false
+20 silly placeDep ROOT create-vite@7.0.0 OK for:  want: 7.0.0
+21 silly reify moves {}
+22 silly audit bulk request { 'create-vite': [ '7.0.0' ] }
+23 http cache create-vite@https://registry.npmjs.org/create-vite/-/create-vite-7.0.0.tgz 1ms (cache hit)
+24 silly tarball no local data for create-vite@https://registry.npmjs.org/create-vite/-/create-vite-7.0.0.tgz. Extracting by manifest.
+25 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 437ms
+26 silly audit report {}
+27 http fetch GET 200 https://registry.npmjs.org/create-vite/-/create-vite-7.0.0.tgz 1032ms (cache miss)
+28 verbose cwd C:\Users\Avi\OneDrive\Desktop\projects\eap
+29 verbose os Windows_NT 10.0.22631
+30 verbose node v23.6.1
+31 verbose npm  v10.9.2
+32 verbose exit 0
+33 info ok
