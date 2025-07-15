@@ -1,0 +1,58 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Build output
+/dist
+/build
+frontend/build
+frontend/dist
+backend/dist
+
+# Optional caches
+.npm/
+.cache/
+.next/
+.out/
+coverage/
+
+# Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Local env logs
+*.log
+
+# dotenv backup
+.env.*
+
+# Backend uploads/temp (if any)
+uploads/
+tmp/

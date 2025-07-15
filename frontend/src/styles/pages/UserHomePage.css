@@ -1,0 +1,92 @@
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8f9fa;
+  margin-top: 80px;
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header-section h1 {
+  color: #2b2d42;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-section p {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+.tab-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.tab-button {
+  padding: 0.8rem 2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  color: #4361ee;
+  border-bottom-color: #4361ee;
+}
+
+.tab-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #4361ee;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .header-section h1 {
+    font-size: 2rem;
+  }
+  
+  .tab-button {
+    padding: 0.8rem 1rem;
+  }
+  
+  .tab-content {
+    padding: 1.5rem;
+  }
+}

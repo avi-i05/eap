@@ -1,0 +1,140 @@
+.dashboard-graphs {
+  --graph-gap: 1.5rem;
+  --card-padding: 1.5rem;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--graph-gap);
+  margin: 2rem 0;
+}
+
+.graph-card {
+  background: #fff;
+  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.graph-card h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.graph-card h4::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.graph-content {
+  flex: 1;
+  position: relative;
+  min-height: 250px;
+}
+
+/* Chart tooltip styling */
+.graph-card .chartjs-tooltip {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.5rem 0.75rem !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .dashboard-graphs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .graph-card {
+    min-height: 300px;
+    padding: 1rem;
+  }
+  
+  .graph-card h4 {
+    font-size: 1.1rem;
+  }
+}
+
+
+.graph-empty-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray);
+  text-align: center;
+  padding: 1rem;
+}
+
+.graph-empty-state i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+
+.graph-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  border-radius: var(--radius-md);
+}
+
+
+.graph-card .chartjs-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.graph-card .chartjs-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.graph-card .chartjs-legend li span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
