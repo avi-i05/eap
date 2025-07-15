@@ -7,6 +7,8 @@ import DataVisualization from "../components/DataVisualization/DataVisualization
 import UserFileList from "../components/UserFileList";
 import axios from "axios";
 import "../styles/pages/UserHomePage.css";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const UserHomePage = () => {
   const [activeTab, setActiveTab] = useState("visualize");
   const [fileUploaded, setFileUploaded] = useState(false);
@@ -15,7 +17,7 @@ const UserHomePage = () => {
   const fetchFiles = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/history", {
+      const res = await axios.get(`${BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(res.data.files);
@@ -25,20 +27,20 @@ const UserHomePage = () => {
   };
 
   useEffect(() => {
-    fetchFiles(); // Initial fetch
+    fetchFiles(); 
   }, []);
 
-  // Handle upload success
+
   const handleUploadSuccess = () => {
     setFileUploaded(true);
-    fetchFiles(); // Refresh the file list
+    fetchFiles();
     setActiveTab("visualize");
     setTimeout(() => setFileUploaded(false), 3000);
   };
 
-  // Handle file deletion
+
   const handleFileDelete = () => {
-    fetchFiles(); // Refresh the file list after deletion
+    fetchFiles(); 
   };
 
   return (

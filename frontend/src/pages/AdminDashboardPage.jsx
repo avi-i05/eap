@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import "../styles/pages/AdminDashboardPage.css";
 import DashboardCharts from "../components/DashboardCharts";
 import LogList from "../components/LogList";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const AdminDashboardPage = () => {
   const [stats, setStats] = useState({
@@ -20,13 +22,13 @@ const AdminDashboardPage = () => {
       try {
         const token = localStorage.getItem("token");
         const [usersRes, filesRes, logsRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/admin/users", {
+          axios.get(`${BASE_URL}/api/admin/users`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get("http://localhost:5000/api/admin/files", {
+          axios.get(`${BASE_URL}/api/admin/files`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get("http://localhost:5000/api/admin/logs", {
+          axios.get(`${BASE_URL}/api/admin/logs`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);

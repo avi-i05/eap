@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../styles/components/Auth.css";
 import Squares from "../components/Squares"
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +13,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/forgot-password",
+        `${BASE_URL}/api/forgot-password`,
         { email }
       );
       setMessage(res.data.message);

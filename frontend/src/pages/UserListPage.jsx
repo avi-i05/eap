@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import "../styles/pages/UserListPage.css";
 import UserRow from "../components/UserRow";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const UserListPage = () => {
   const [users, setUsers] = useState([]);
@@ -15,7 +17,7 @@ const UserListPage = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/admin/users", {
+        const res = await axios.get(`${BASE_URL}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data.users);
@@ -31,7 +33,7 @@ const UserListPage = () => {
   const handleBlockToggle = async (userId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.patch(`http://localhost:5000/api/admin/users/${userId}/block`, {}, {
+      await axios.patch(`${BASE_URL}/api/admin/users/${userId}/block`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(prev => prev.map(user => (
@@ -47,7 +49,7 @@ const UserListPage = () => {
     toast.info("Deleting user...");
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
+      await axios.delete(`${BASE_URL}/api/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(prev => prev.filter(user => user._id !== userId));

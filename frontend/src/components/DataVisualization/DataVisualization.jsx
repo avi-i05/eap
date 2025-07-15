@@ -28,6 +28,8 @@ ChartJS.register(
   PointElement,
   LineElement
 );
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const DataVisualization = () => {
   const [chartType, setChartType] = useState("bar");
@@ -49,7 +51,7 @@ const DataVisualization = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:5000/api/history", {
+        const { data } = await axios.get(`${BASE_URL}/api/history`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFiles(data.files);
@@ -163,7 +165,7 @@ const DataVisualization = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get("http://localhost:5000/api/history", {
+      const { data } = await axios.get(`${BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(data.files);

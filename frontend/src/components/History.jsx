@@ -3,6 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import DataVisualizer from '../visualizations/DataVisualization';
 import './History.css';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const History = () => {
     const [files, setFiles] = useState([]);
@@ -15,7 +16,7 @@ const History = () => {
         try {
             setLoading(true);
             const token = localStorage.getItem('token');
-            const { data } = await axios.get(`http://localhost:5000/api/files/history?page=${page}&limit=5`, {
+            const { data } = await axios.get(`${BASE_URL}/api/files/history?page=${page}&limit=5`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

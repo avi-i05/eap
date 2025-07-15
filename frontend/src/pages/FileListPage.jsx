@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import FileCard from "../components/FileCard";
 import "../styles/pages/FileListPage.css";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const FileListPage = () => {
   const [files, setFiles] = useState([]);
@@ -18,7 +19,7 @@ const FileListPage = () => {
   const fetchFiles = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/admin/files", {
+      const res = await axios.get(`${BASE_URL}/api/admin/files`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(res.data.files);
@@ -32,7 +33,7 @@ const FileListPage = () => {
   const handleDownload = async (fileId, fileName) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:5000/api/admin/files/${fileId}`, {
+      const res = await axios.get(`${BASE_URL}/api/admin/files/${fileId}`, {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob'
       });
@@ -53,7 +54,7 @@ const FileListPage = () => {
     toast.info("Deleting file...");
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/admin/files/${fileId}`, {
+      await axios.delete(`${BASE_URL}/api/admin/files/${fileId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(files.filter((file) => file._id !== fileId));

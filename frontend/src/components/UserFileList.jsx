@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/components/UserFileList.css";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const UserFileList = ({ refreshFlag }) => {
   const [files, setFiles] = useState([]);
@@ -11,7 +13,7 @@ const UserFileList = ({ refreshFlag }) => {
   const fetchUserFiles = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/history", {
+      const res = await axios.get(`${BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFiles(res.data.files);

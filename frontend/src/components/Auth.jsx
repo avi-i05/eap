@@ -6,6 +6,7 @@ import "../styles/components/Auth.css";
 import { FiEye, FiEyeOff, FiUser, FiMail, FiLock } from "react-icons/fi";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Auth = ({ setToken, setRole }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -31,8 +32,8 @@ const Auth = ({ setToken, setRole }) => {
     e.preventDefault();
     try {
       const url = isLogin
-        ? "http://localhost:5000/api/login"
-        : "http://localhost:5000/api/register";
+        ? `${BASE_URL}/api/login`
+        : `${BASE_URL}/api/register`;
 
       const { data } = await axios.post(url, formData);
       toast.success(data.message);
