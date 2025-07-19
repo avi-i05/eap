@@ -9,6 +9,7 @@ const {
   resetPassword,
 } = require("../controllers/authController");
 const logAction = require("../utils/logAction");
+const CLIENT_URL = process.env.CLIENT_URL
 
 router.post("/register", register);
 router.post("/login", login);
@@ -25,7 +26,7 @@ router.get(
     if (!req.user) {
       console.log("Google login failed: no user returned.");
       return res.redirect(
-        `http://localhost:5173/social-login?error=login_failed`
+        `${CLIENT_URL}/social-login?error=login_failed`
       );
     }
 
@@ -38,7 +39,7 @@ router.get(
     await logAction(req.user.id, req.user.username, "Google Login");
 
     res.redirect(
-      `http://localhost:5173/social-login?token=${token}&role=${req.user.role}`
+      `${CLIENT_URL}/social-login?token=${token}&role=${req.user.role}`
     );
   }
 );
@@ -54,7 +55,7 @@ router.get(
   async (req, res) => {
     if (!req.user) {
       return res.redirect(
-        `http://localhost:5173/social-login?error=login_failed`
+        `${CLIENT_URL}/social-login?error=login_failed`
       );
     }
 
@@ -67,7 +68,7 @@ router.get(
     await logAction(req.user.id, req.user.username, "GitHub Login");
 
     res.redirect(
-      `http://localhost:5173/social-login?token=${token}&role=${req.user.role}`
+      `${CLIENT_URL}/social-login?token=${token}&role=${req.user.role}`
     );
   }
 );
