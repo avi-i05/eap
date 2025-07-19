@@ -3,13 +3,14 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
 const User = require("../models/User");
 const axios = require("axios");
+const SERVER_URL = process.env.SERVER_URL;
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/api/google/callback",
+      callbackURL: `${SERVER_URL}/api/google/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -36,7 +37,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/api/github/callback",
+      callbackURL: `${SERVER_URL}/api/github/callback`,
       scope: ["user:email"],
     },
     async (accessToken, refreshToken, profile, done) => {
