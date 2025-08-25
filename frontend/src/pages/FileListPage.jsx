@@ -33,20 +33,25 @@ const FileListPage = () => {
   const handleDownload = async (fileId, fileName) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`${BASE_URL}/api/admin/files/${fileId}`, {
+      const response = await axios.get(`${BASE_URL}/api/admin/files/${fileId}/download`, {
         headers: { Authorization: `Bearer ${token}` },
-        responseType: 'blob'
+        responseType: "blob",
       });
-  
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement('a');
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
       link.href = url;
-      link.setAttribute('download', fileName);
+      link.setAttribute("download", fileName);
       document.body.appendChild(link);
       link.click();
       link.remove();
-    } catch {
-      alert("Failed to download file");
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      if (error.response?.status === 403) {
+        alert("You don't have permission to download this file");
+      } else {
+        alert("Failed to download file. Please try again.");
+      }
     }
   };
 

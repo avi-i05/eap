@@ -39,37 +39,25 @@ const UserFileList = ({ refreshFlag }) => {
   const handleDownload = async (fileId, fileName) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:5000/api/download/${fileId}`, {
+      const response = await axios.get(`http://localhost:5000/api/files/${fileId}/download`, {
         headers: { Authorization: `Bearer ${token}` },
-        responseType: "blob",
+        responseType: 'blob',
       });
 
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement("a");
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
       link.href = url;
-      link.setAttribute("download", fileName);
+      link.setAttribute('download', fileName);
       document.body.appendChild(link);
       link.click();
       link.remove();
-    } catch {
-      alert("Download failed. Please try again.");
-    }
-  };
-
-  const handleDelete = async (fileId) => {
-    if (!window.confirm("Are you sure you want to delete this file?")) return;
-
-    try {
-      const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/files/${fileId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      alert("File deleted successfully.");
-      fetchUserFiles();
-      if (selectedFile && selectedFile._id === fileId) setSelectedFile(null);
-    } catch {
-      alert("Failed to delete file.");
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      if (error.response?.status === 403) {
+        alert("You don't have permission to download this file");
+      } else {
+        alert("Download failed. Please try again.");
+      }
     }
   };
 
@@ -101,15 +89,6 @@ const UserFileList = ({ refreshFlag }) => {
                   }}
                 >
                   Download
-                </button>
-                <button
-                  className="file-action-btn delete"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDelete(file._id);
-                  }}
-                >
-                  Delete
                 </button>
               </div>
             </div>

@@ -32,8 +32,8 @@ const Auth = ({ setToken, setRole }) => {
     e.preventDefault();
     try {
       const url = isLogin
-        ? `${BASE_URL}/api/login`
-        : `${BASE_URL}/api/register`;
+        ? `${BASE_URL}/api/auth/login`
+        : `${BASE_URL}/api/auth/register`;
 
       const { data } = await axios.post(url, formData);
       toast.success(data.message);
@@ -46,7 +46,7 @@ const Auth = ({ setToken, setRole }) => {
         if (data.user.role === "admin") {
           navigate("/admin/dashboard");
         } else {
-          navigate("/user-home");
+          navigate("/user/home");
         }
         window.location.reload();
         return;
@@ -164,7 +164,7 @@ const Auth = ({ setToken, setRole }) => {
           <button
             className="social-btn google-btn"
             onClick={() =>
-              window.open("http://localhost:5000/api/google", "_self")
+              window.open(`${BASE_URL}/api/google`, "_self")
             }
           >
             <FaGoogle className="icon" /> Continue with Google
@@ -173,7 +173,7 @@ const Auth = ({ setToken, setRole }) => {
           <button
             className="social-btn github-btn"
             onClick={() =>
-              window.open("http://localhost:5000/api/github", "_self")
+              window.open(`${BASE_URL}/api/github`, "_self")
             }
           >
             <FaGithub className="icon" /> Continue with GitHub

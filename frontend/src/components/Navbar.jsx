@@ -49,12 +49,6 @@ const Navbar = ({ token, role, setToken, setRole }) => {
                             <NavLink to="/admin/dashboard" className="nav-link">
                                 Dashboard
                             </NavLink>
-                            <NavLink to="/admin/users" className="nav-link">
-                                Users
-                            </NavLink>
-                            <NavLink to="/admin/files" className="nav-link">
-                                Files
-                            </NavLink>
                         </>
                     )}
 

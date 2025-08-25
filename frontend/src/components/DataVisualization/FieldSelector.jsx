@@ -1,59 +1,64 @@
-import React, { useEffect } from "react";
-import { toast } from "react-toastify";
+import React from 'react';
 
-const FieldSelector = ({
-  selectedFile,
-  labelField,
-  setLabelField,
-  valueField,
-  setValueField,
-}) => {
-  useEffect(() => {
-    if (!selectedFile?.data?.length) {
-      toast.error("No data found in the selected file.");
-    }
-  }, [selectedFile]);
-
-  if (!selectedFile?.data?.length) return null;
-
-  const fields = Object.keys(selectedFile.data[0]);
-
+const FieldSelector = ({ field, fieldIndex, fileData, onFieldUpdate, chartType }) => {
+  const availableFields = Object.keys(fileData[0] || {});
+  
+  // For pie/doughnut charts, we only need one field
+  const isPieChart = ["pie", "doughnut"].includes(chartType);
+  
   return (
-    <div className="field-selectors">
-      <div className="field-selector">
-        <label htmlFor="label-field">Label Field:</label>
+    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flex: 1 }}>
+      <div style={{ flex: 1 }}>
+        <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.8rem', color: '#6c757d' }}>
+          {isPieChart ? 'Field:' : (fieldIndex === 0 ? 'Label Field (X-axis):' : 'Value Field (Y-axis):')}
+        </label>
         <select
-          id="label-field"
-          value={labelField}
-          onChange={(e) => setLabelField(e.target.value)}
-          className="field-dropdown"
-          aria-label="Select label field"
+          value={isPieChart ? (field.value || field.label) : (fieldIndex === 0 ? field.label : field.value)}
+          onChange={(e) => {
+            if (isPieChart) {
+              // For pie charts, update both label and value to the same field
+              onFieldUpdate({ ...field, label: e.target.value, value: e.target.value });
+            } else {
+              if (fieldIndex === 0) {
+                onFieldUpdate({ ...field, label: e.target.value });
+              } else {
+                onFieldUpdate({ ...field, value: e.target.value });
+              }
+            }
+          }}
+          style={{
+            padding: '0.25rem',
+            borderRadius: '4px',
+            border: '1px solid #ddd',
+            width: '100%',
+            fontSize: '0.9rem'
+          }}
         >
-          {fields.map((key) => (
-            <option key={key} value={key}>
-              {key}
-            </option>
+          {availableFields.map(key => (
+            <option key={key} value={key}>{key}</option>
           ))}
         </select>
       </div>
-      <div className="field-selector">
-        <label htmlFor="value-field">Value Field:</label>
-        <select
-          id="value-field"
-          value={valueField}
-          onChange={(e) => setValueField(e.target.value)}
-          className="field-dropdown"
-          aria-label="Select value field"
-        >
-          {fields.map((key) => (
-            <option key={key} value={key}>
-              {key}
-            </option>
-          ))}
-        </select>
+
+      <div>
+        <label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '0.8rem', color: '#6c757d' }}>
+          Color:
+        </label>
+        <input
+          type="color"
+          value={field.color}
+          onChange={(e) => onFieldUpdate({ ...field, color: e.target.value })}
+          style={{
+            width: '40px',
+            height: '30px',
+            border: '1px solid #ddd',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        />
       </div>
     </div>
   );
 };
 
-export default FieldSelector;
+export default FieldSelector; 

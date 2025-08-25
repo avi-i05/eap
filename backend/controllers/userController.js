@@ -18,20 +18,31 @@ exports.downloadUserFile = async (req, res) => {
         .json({ message: "You are not authorized to download this file" });
     }
 
+    // Determine the original file format from the filename
+    const fileExtension = file.fileName.split('.').pop().toLowerCase();
+    const isXLS = fileExtension === 'xls';
+    
     const ws = XLSX.utils.json_to_sheet(file.data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-    const buffer = XLSX.write(wb, { bookType: "xlsx", type: "buffer" });
+    // Use the appropriate format based on original file extension
+    const buffer = XLSX.write(wb, { 
+      bookType: isXLS ? "xls" : "xlsx", 
+      type: "buffer" 
+    });
 
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename=${file.fileName}`
+      `attachment; filename*=UTF-8''${encodeURIComponent(file.fileName)}`
     );
-    res.setHeader(
-      "Content-Type",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    );
+    
+    // Set appropriate content type based on file format
+    const contentType = isXLS 
+      ? "application/vnd.ms-excel"
+      : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    
+    res.setHeader("Content-Type", contentType);
     res.send(buffer);
   } catch (error) {
     console.error("Download Error:", error);

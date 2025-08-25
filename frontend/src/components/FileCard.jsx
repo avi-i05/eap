@@ -56,16 +56,18 @@ const FileCard = ({ file, index, variants, onDownload, onDelete, onClick }) => {
         >
           <i className="fas fa-download"></i>
         </button>
-        <button
-          className="action-btn delete-btn"
-          title="Delete"
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete(file._id);
-          }}
-        >
-          <i className="fas fa-trash"></i>
-        </button>
+        {onDelete && (
+          <button
+            className="action-btn delete-btn"
+            title="Delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(file._id);
+            }}
+          >
+            <i className="fas fa-trash"></i>
+          </button>
+        )}
       </div>
     </motion.div>
   );

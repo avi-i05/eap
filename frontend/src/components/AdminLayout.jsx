@@ -7,6 +7,7 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -18,6 +19,32 @@ const AdminLayout = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // Handle mobile responsiveness
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+      if (window.innerWidth <= 1024) {
+        setSidebarOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle navbar positioning based on sidebar state
+  React.useEffect(() => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      if (!sidebarOpen) {
+        navbar.classList.add('sidebar-collapsed');
+      } else {
+        navbar.classList.remove('sidebar-collapsed');
+      }
+    }
+  }, [sidebarOpen]);
 
   const sidebarVariants = {
     open: { width: "280px" },
@@ -35,8 +62,28 @@ const AdminLayout = () => {
 
   return (
     <div className="admin-layout">
+      {/* Mobile Menu Toggle */}
+      {isMobile && (
+        <button 
+          className="mobile-menu-toggle" 
+          onClick={toggleSidebar}
+          aria-label="Toggle menu"
+        >
+          <i className={`fas fa-${sidebarOpen ? 'times' : 'bars'}`}></i>
+        </button>
+      )}
+
+      {/* Mobile Backdrop */}
+      {isMobile && sidebarOpen && (
+        <div 
+          className="mobile-backdrop" 
+          onClick={toggleSidebar}
+          aria-hidden="true"
+        />
+      )}
+
       <motion.aside
-        className="sidebar"
+        className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}
         initial={false}
         animate={sidebarOpen ? "open" : "closed"}
         variants={sidebarVariants}
@@ -57,6 +104,8 @@ const AdminLayout = () => {
             <NavItem to="/admin/dashboard" icon="tachometer-alt" text="Dashboard" />
             <NavItem to="/admin/users" icon="users" text="Users" />
             <NavItem to="/admin/files" icon="file-archive" text="Files" />
+            <NavItem to="/admin/charts" icon="chart-pie" text="Charts" />
+            <NavItem to="/admin/settings" icon="cog" text="Settings" />
           </ul>
         </nav>
 
